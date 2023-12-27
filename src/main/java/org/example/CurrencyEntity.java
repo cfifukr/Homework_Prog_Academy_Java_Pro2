@@ -4,33 +4,38 @@ import com.google.gson.annotations.SerializedName;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@Entity
+public class CurrencyEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    private Date date;
 
 
-public class Currency {
-
-    @SerializedName("exchangedate")
-    private String date;
-
-    @SerializedName("cc")
     private String currencyName;
 
-    @SerializedName("rate")
+
     private double value;
 
-    public Currency() {
+    public CurrencyEntity() {
     }
 
-    public Currency(String date, String currencyName, double value) {
+    public CurrencyEntity(Date date, String currencyName, double value) {
+
         this.date = date;
         this.currencyName = currencyName;
         this.value = value;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -53,6 +58,6 @@ public class Currency {
     @Override
     public String toString() {
         SimpleDateFormat smf = new SimpleDateFormat("dd-MM-yyyy");
-        return "CurrencyName ='" + currencyName + '\'' + smf.format(date) + " = " + value;
+        return currencyName + " " + smf.format(date) + " = " + value;
     }
 }

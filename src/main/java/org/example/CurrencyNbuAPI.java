@@ -49,11 +49,10 @@ public class CurrencyNbuAPI {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("No json response");
+        System.out.println("No json response - " + url);
         return null;
     }
     public static Currency[] getCurrenciesFromJSON(String jsonResponse){
-
 
 
         return gson.fromJson(jsonResponse, Currency[].class);
